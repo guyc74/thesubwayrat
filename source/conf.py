@@ -78,7 +78,7 @@ html_theme      = 'sphinx_celery'
 # html_theme_path = [ corlab_theme.get_theme_dir() ]
 
 # Theme options are theme-specific and customize the look and feel of a theme
-# further.  For a list of options available for each theme, see the
+# further.  For a list of op tions available for each theme, see the
 # documentation.
 #
 # html_theme_options = {}
