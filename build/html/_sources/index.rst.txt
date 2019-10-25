@@ -3,14 +3,16 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to The Subway Rat
-=========================
 
 Lets build a computer game!
+===========================
 
 Manny is a rat.
 He lives in the new york city subway.
-In our game Manny runs through the subway trying not to hit obstacles.
+Manny loves to run.
+However the new york city subway has many obstacles.
+
+In our game we help Manny avoid the obstacles in the new york city subway.
 
 .. toctree::
    :maxdepth: 2
