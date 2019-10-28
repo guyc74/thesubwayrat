@@ -19,6 +19,7 @@ In our game we help Manny avoid the obstacles in the new york city subway.
    :caption: Contents:
 
   introduction
+  story
 
 .. image:: _static/manny.png
    :scale: 500 %
