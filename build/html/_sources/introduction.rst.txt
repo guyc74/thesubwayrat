@@ -33,6 +33,11 @@ To install it on your computer click here https://code.visualstudio.com/download
 Once we've written a program we need to run (or execute) it.
 This is done using a compiler.
 
+.. raw:: html
+
+    <video width="640" height="480" controls>
+      <source src="_static/video1.mkv">
+    </video>
 
 - click the extensions button
 -write "python" in the top left bar where it says "search Extensions in Marketplace"

@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Pixels &#8212; The Subway Rat  documentation</title>
+    <link rel="stylesheet" href="../_static/celery.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">The Subway Rat  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Loading Manny’s picture</p>
+<p>Where is Manny on the screen</p>
+<p>Putting Manny on the screen</p>
+<p>Drawing</p>
+<p>Waiting to see our wonderful job</p>
+<div class="section" id="pixels">
+<h1>Pixels<a class="headerlink" href="#pixels" title="Permalink to this headline">¶</a></h1>
+<p>A computer screen is a composed of many small points on a grid.
+Each point is called a <strong>pixel</strong>.
+The position of each pixel is indicated by two numbers:
+the distance from the left side of the screen
+and distance from the top of the screen.
+This position is called a <strong>coordinate</strong>.
+If the distance from the left side of the screen is x,
+and the distance from the top of the screne is y,
+then the coordinate of that pixel is (x,y).
+In the figre below we see a pixel at position (7,4).</p>
+<div class="figure align-center" id="id1" style="width: 85%">
+<a class="reference internal image-reference" href="temp\_static/pixel.png"><img alt="temp\_static/pixel.png" src="temp\_static/pixel.png" style="width: 85%;" /></a>
+<p class="caption"><span class="caption-text">A pixel at position (7,4)</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>To draw a rat we need to turn on several pixels.
+In the figure below the picture of a simple rat was created by writing to pixels:
+(2,3), (3,3), (4,3), (5,3),
+(6,1), (6,2), (6,3), (6,4), (6,5),
+(7,2), (7,3), (7,4),
+(8,2), (8,3), (8,4),
+(9,1), (9,2), (9,3), (9,4), (9,5)
+and (10, 3).
+That’s a lot of pixels.</p>
+<div class="figure align-center" id="id2" style="width: 75%">
+<a class="reference internal image-reference" href="temp\_static/simple_rat.png"><img alt="temp\_static/simple_rat.png" src="temp\_static/simple_rat.png" style="width: 75%;" /></a>
+<p class="caption"><span class="caption-text">A simple rat</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>It is hard to write so many pixels.
+Instead of writing each pixel individually we can use a ready made image.
+We can create one using the paint program.
+You can also use thi ready image <a class="reference external" href="manny.png">Manny</a>.
+Right click on the link and save the image.</p>
+</div>
+<div class="section" id="manny-on-the-screen">
+<h1>Manny on the screen<a class="headerlink" href="#manny-on-the-screen" title="Permalink to this headline">¶</a></h1>
+<p>With the pygame package we don’t have to create the image pixel by pixel.
+Instead we can load an image to a variable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">manny_image</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;manny.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can create any image you like.
+Or you can use this ready mande image of manny:</p>
+<p>Right click on the image, download it and copy it to our directory.</p>
+<p>To draw the image we define the rectable where it is on the screen.
+First we create the rectangle:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">manny_rect</span> <span class="o">=</span> <span class="n">manny_image</span><span class="o">.</span><span class="n">get_rect</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Now we need to decide where on the screen we want to place Manny:</p>
+<blockquote>
+<div><p>manny_rect.topleft = (WINDOWWIDTH / 2, WINDOWHEIGHT - 50)</p>
+</div></blockquote>
+<p>And now we need to actually draw Manny:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">windowSurface</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">manny_image</span><span class="p">,</span> <span class="n">manny_rect</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Our program should look like this. Make sure you understand each part!:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">windowSurface</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="n">WINDOWWIDTH</span><span class="p">,</span> <span class="n">WINDOWHEIGHT</span><span class="p">))</span>
+<span class="n">manny_image</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;manny.png&#39;</span><span class="p">)</span>
+<span class="n">manny_rect</span> <span class="o">=</span> <span class="n">manny_image</span><span class="o">.</span><span class="n">get_rect</span><span class="p">()</span>
+<span class="n">manny_rect</span><span class="o">.</span><span class="n">topleft</span> <span class="o">=</span> <span class="p">(</span><span class="n">WINDOWWIDTH</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">WINDOWHEIGHT</span> <span class="o">-</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">windowSurface</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">manny_image</span><span class="p">,</span> <span class="n">manny_rect</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="manny-moves">
+<h2>Manny moves<a class="headerlink" href="#manny-moves" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="subway-obstacles">
+<h2>Subway obstacles<a class="headerlink" href="#subway-obstacles" title="Permalink to this headline">¶</a></h2>
+<p>We drew Manny.
+We moved Manny.</p>
+<p>Drawing obstacles and moving obstacles should very similar and therefor easy.
+The differences are:
+* The obstacle image is different.
+* Obstacles move from right to left and not up down.
+* The obstacles need to move without our control - even if we don’t touch the keyboard.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Pixels</a></li>
+<li><a class="reference internal" href="#manny-on-the-screen">Manny on the screen</a><ul>
+<li><a class="reference internal" href="#manny-moves">Manny moves</a></li>
+<li><a class="reference internal" href="#subway-obstacles">Subway obstacles</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/temp/part2.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">The Subway Rat  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Guy Caspary.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
+    </div>
+  </body>
+</html>

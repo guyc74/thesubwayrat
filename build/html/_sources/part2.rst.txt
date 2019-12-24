@@ -1,0 +1,15 @@
+
+Manny moves
+===========
+
+Subway obstacles
+================
+
+We drew Manny.
+We moved Manny.
+
+Drawing obstacles and moving obstacles should very similar and therefor easy.
+The differences are:
+* The obstacle image is different.
+* Obstacles move from right to left and not up down.
+* The obstacles need to move without our control - even if we don't touch the keyboard.

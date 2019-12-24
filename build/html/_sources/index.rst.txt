@@ -20,6 +20,7 @@ In our game we help Manny avoid the obstacles in the new york city subway.
 
   introduction
   part1
+  part2
   story
 
 .. image:: _static/manny.png

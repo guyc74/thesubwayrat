@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Drawing Manny &#8212; The Subway Rat  documentation</title>
+    <title>Drawing Manny - Part 1 &#8212; The Subway Rat  documentation</title>
     <link rel="stylesheet" href="_static/celery.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
@@ -39,102 +39,147 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="drawing-manny">
-<h1>Drawing Manny<a class="headerlink" href="#drawing-manny" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="drawing-manny-part-1">
+<h1>Drawing Manny - Part 1<a class="headerlink" href="#drawing-manny-part-1" title="Permalink to this headline">¶</a></h1>
 <p>The first thing we’ll do is draw Manny the rat.
-A computer screen is a composed of many small points on a grid.
-Each point is called a <strong>pixel</strong>.
-The position of each pixel is indicated by two numbers:
-the distance from the left side of the screen
-and distance from the top of the screen.
-This position is called a <strong>coordinate</strong>.
-If the distance from the left side of the screen is x,
-and the distance from the top of the screne is y,
-then the coordinate of that pixel is (x,y).
-In the figre below we see a pixel at position (7,4).</p>
-<div class="figure align-center" id="id1" style="width: 85%">
-<a class="reference internal image-reference" href="_images/pixel.png"><img alt="_images/pixel.png" src="_images/pixel.png" style="width: 85%;" /></a>
-<p class="caption"><span class="caption-text">A pixel at position (7,4)</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
-<p>To draw a rat we need to turn on several pixels.
-In the figure below the picture of a simple rat was created by writing to pixels:
-(2,3), (3,3), (4,3), (5,3),
-(6,1), (6,2), (6,3), (6,4), (6,5),
-(7,2), (7,3), (7,4),
-(8,2), (8,3), (8,4),
-(9,1), (9,2), (9,3), (9,4), (9,5)
-and (10, 3).
-That’s a lot of pixels.</p>
-<div class="figure align-center" id="id2" style="width: 85%">
-<a class="reference internal image-reference" href="_images/simple_rat.png"><img alt="_images/simple_rat.png" src="_images/simple_rat.png" style="width: 85%;" /></a>
-<p class="caption"><span class="caption-text">A simple rat</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-<p>It is hard to write so many pixels.
-Instead of writing each pixel individually we can use a ready made image.
-We can create one using the paint program.
-You can also use thi ready image <a class="reference external" href="manny.png">Manny</a>.
-Right click on the link and save the image.</p>
-<div class="section" id="manny-on-the-screen">
-<h2>Manny on the screen<a class="headerlink" href="#manny-on-the-screen" title="Permalink to this headline">¶</a></h2>
-<p>Below is a piece of code that draws Manny on the screen.
-Open a new file in your editor and call it draw_manny.py.
-Then copy-paste the piece of code from the browser to the editor.
-And now run the piece of code.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygame</span><span class="o">,</span> <span class="nn">random</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">time</span>
+A program that draws Manny is very small.
+Only nine lines!
+Here it is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygame</span>
 <span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
-<span class="n">windowSurface</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="mi">500</span><span class="p">,</span> <span class="mi">700</span><span class="p">))</span>
+<span class="n">window</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="mi">700</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span>
+
 <span class="n">manny_image</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;manny.png&#39;</span><span class="p">)</span>
 <span class="n">manny_rect</span> <span class="o">=</span> <span class="n">manny_image</span><span class="o">.</span><span class="n">get_rect</span><span class="p">()</span>
-<span class="n">manny_rect</span><span class="o">.</span><span class="n">topleft</span> <span class="o">=</span> <span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">350</span><span class="p">)</span>
-<span class="n">windowSurface</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">manny_image</span><span class="p">,</span> <span class="n">manny_rect</span><span class="p">)</span>
+<span class="n">manny_rect</span><span class="o">.</span><span class="n">topleft</span> <span class="o">=</span> <span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">250</span><span class="p">)</span>
+<span class="n">window</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">manny_image</span><span class="p">,</span> <span class="n">manny_rect</span><span class="p">)</span>
+
 <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">input</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Even though the program is small we need to learn a lot in order to understand it.
+We will do this in two parts: opening the game window and drawing Manny on the game window.</p>
+<div class="section" id="opening-the-game-window">
+<h2>Opening the game window<a class="headerlink" href="#opening-the-game-window" title="Permalink to this headline">¶</a></h2>
+<p>The following program opens the game window.
+Lets run it:
+Open a new file in your editor and call it <cite>open_window.py</cite>.
+Copy and paste the piece of code below to the new file.
+Now run the piece of code.
+You should see a black window.
+When you press a key in the terminal the window closes.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygame</span>
+<span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="n">window</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="mi">700</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span>
+
+<span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<span class="nb">input</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Lets go over each line and undertand what it does.</p>
-<p>With the pygame package we don’t have to create the image pixel by pixel.
-Instead we can load an image to a variable:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">manny_image</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;manny.png&#39;</span><span class="p">)</span>
+</div>
+<div class="section" id="packages">
+<h2>Packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h2>
+<p>One of the nice thing in Python is that we don’t have to write everything ourselves.
+Many people around the world write additions to python that we can use.
+These additions are called <strong>packages</strong>.
+The first line of the program is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygame</span>
 </pre></div>
 </div>
-<p>You can create any image you like.
-Or you can use this ready mande image of manny:</p>
-<p>Right click on the image, download it and copy it to our directory.</p>
-<p>To draw the image we define the rectable where it is on the screen.
-First we create the rectangle:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">manny_rect</span> <span class="o">=</span> <span class="n">manny_image</span><span class="o">.</span><span class="n">get_rect</span><span class="p">()</span>
+<p>It allows us to use the pygame package.
+This package allows us to create a game window and draw on it.</p>
+</div>
+<div class="section" id="objects">
+<h2>Objects<a class="headerlink" href="#objects" title="Permalink to this headline">¶</a></h2>
+<p>In many programming languages we have <strong>objects</strong>.
+An object has <strong>properties</strong> and <strong>methods</strong>.
+Methods are actions that the object can perform.</p>
+<p>Imagine a car as an object.
+Its properties can be its color and its brand.
+Its actions can be start driving and stop driving.</p>
+<p>The second line of the program is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Now we need to decide where on the screen we want to place Manny:</p>
-<blockquote>
-<div><p>manny_rect.topleft = (WINDOWWIDTH / 2, WINDOWHEIGHT - 50)</p>
-</div></blockquote>
-<p>And now we need to actually draw Manny:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">windowSurface</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">manny_image</span><span class="p">,</span> <span class="n">manny_rect</span><span class="p">)</span>
+<p>This line initializes the pygame object from the pygame package.
+We will use the pygame object to interact with our game: draw and get keyboard input.
+However, before we use the pygame object we must initialize it.
+We tell the pygame object to perform its init action.</p>
+<p>A programer says this as follows “we call the pygame init method()”.</p>
+</div>
+<div class="section" id="creating-the-screen">
+<h2>Creating the screen<a class="headerlink" href="#creating-the-screen" title="Permalink to this headline">¶</a></h2>
+<p>The third line creates the game window.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">window</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="mi">500</span><span class="p">,</span> <span class="mi">700</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Our program should look like this. Make sure you understand each part!:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">windowSurface</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="n">WINDOWWIDTH</span><span class="p">,</span> <span class="n">WINDOWHEIGHT</span><span class="p">))</span>
-<span class="n">manny_image</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;manny.png&#39;</span><span class="p">)</span>
-<span class="n">manny_rect</span> <span class="o">=</span> <span class="n">manny_image</span><span class="o">.</span><span class="n">get_rect</span><span class="p">()</span>
-<span class="n">manny_rect</span><span class="o">.</span><span class="n">topleft</span> <span class="o">=</span> <span class="p">(</span><span class="n">WINDOWWIDTH</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">WINDOWHEIGHT</span> <span class="o">-</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">windowSurface</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">manny_image</span><span class="p">,</span> <span class="n">manny_rect</span><span class="p">)</span>
+<p>The line above is interesting!
+To understand it we will need to learn several things: <strong>variables</strong>, <strong>lists</strong> and <strong>functions</strong>.</p>
+<div class="section" id="variables">
+<h3>variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h3>
+<p>Variables hold values.
+The values can be numbers, objects or other stuff.
+The line below defines a variable called ‘x’ that has a value of 5.
+In each exampel below, try running the code yourself and playing with it.
+Watch the video below for a live example.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">==</span> <span class="mi">5</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can give change the value of ‘x’.
+Below we <strong>assign</strong> the value 5 to the variable ‘x’
+and the we <strong>assign</strong> the value 7 to the variable ‘x’.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">==</span> <span class="mi">5</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">==</span> <span class="mi">7</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can also assign one variable to another.
+In the example below we assign 5 to ‘x’ and then we assign ‘x’ to ‘y’.
+Now ‘y’ has the value 5.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">==</span> <span class="mi">5</span>
+<span class="n">y</span> <span class="o">==</span> <span class="n">x</span>
+<span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="section" id="lists">
+<h3>lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h3>
+<p>A variable can also be a list.
+A list is a sequence of several values.
+To define a list we take three values and place paranthesis around them.
+Here is a list of three numbers:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="manny-moves">
-<h1>Manny moves<a class="headerlink" href="#manny-moves" title="Permalink to this headline">¶</a></h1>
 </div>
-<div class="section" id="subway-obstacles">
-<h1>Subway obstacles<a class="headerlink" href="#subway-obstacles" title="Permalink to this headline">¶</a></h1>
-<p>We drew Manny.
-We moved Manny.</p>
-<p>Drawing obstacles and moving obstacles should very similar and therefor easy.
-The differences are:
-* The obstacle image is different.
-* Obstacles move from right to left and not up down.
-* The obstacles need to move without our control - even if we don’t touch the keyboard.</p>
+<div class="section" id="functions">
+<h3>functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<p>Functions do stuff.
+They receive parameters and return a result.
+If you didn’t figure this out, the methods of objects are functions.</p>
+<p>Lets image a function that adds to values. we will use it like this:</p>
+<p>sum = my_sum_function(5, 3)</p>
+</div>
+</div>
+<div class="section" id="creating-the-screen-continued">
+<h2>Creating the screen - continued<a class="headerlink" href="#creating-the-screen-continued" title="Permalink to this headline">¶</a></h2>
+<p>Let’s go back to our third instruction:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">window</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="mi">500</span><span class="p">,</span> <span class="mi">700</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>First of all we see that the pygame objet has a property called display.
+The display property is also an object.
+This is the same as a car (that is an object) that has a steering wheel (that is also an object).</p>
+<p>The display property has a method called set_mode().
+The method is a function that receives the size of the window to create and returns an object of the game’s window.
+The set_mode method receives the window size as a list with two items.
+The first is the width of the window and the second is the height of the window.</p>
+</div>
 </div>
 
 
@@ -145,12 +190,19 @@ The differences are:
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Drawing Manny</a><ul>
-<li><a class="reference internal" href="#manny-on-the-screen">Manny on the screen</a></li>
+<li><a class="reference internal" href="#">Drawing Manny - Part 1</a><ul>
+<li><a class="reference internal" href="#opening-the-game-window">Opening the game window</a></li>
+<li><a class="reference internal" href="#packages">Packages</a></li>
+<li><a class="reference internal" href="#objects">Objects</a></li>
+<li><a class="reference internal" href="#creating-the-screen">Creating the screen</a><ul>
+<li><a class="reference internal" href="#variables">variables</a></li>
+<li><a class="reference internal" href="#lists">lists</a></li>
+<li><a class="reference internal" href="#functions">functions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#manny-moves">Manny moves</a></li>
-<li><a class="reference internal" href="#subway-obstacles">Subway obstacles</a></li>
+<li><a class="reference internal" href="#creating-the-screen-continued">Creating the screen - continued</a></li>
+</ul>
+</li>
 </ul>
 
   <h4>Previous topic</h4>
