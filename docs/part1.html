@@ -53,8 +53,8 @@ Here it is:</p>
 <span class="n">manny_rect</span> <span class="o">=</span> <span class="n">manny_image</span><span class="o">.</span><span class="n">get_rect</span><span class="p">()</span>
 <span class="n">manny_rect</span><span class="o">.</span><span class="n">topleft</span> <span class="o">=</span> <span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">250</span><span class="p">)</span>
 <span class="n">window</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">manny_image</span><span class="p">,</span> <span class="n">manny_rect</span><span class="p">)</span>
-
 <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
 <span class="nb">input</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -73,7 +73,6 @@ When you press a key in the terminal the window closes.</p>
 <span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 <span class="n">window</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="mi">700</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span>
 
-<span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 <span class="nb">input</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -180,6 +179,15 @@ The method is a function that receives the size of the window to create and retu
 The set_mode method receives the window size as a list with two items.
 The first is the width of the window and the second is the height of the window.</p>
 </div>
+<div class="section" id="waiting">
+<h2>Waiting<a class="headerlink" href="#waiting" title="Permalink to this headline">¶</a></h2>
+<p>The fourth line in the program is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">input</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This command waits for a key press on the keyboard.
+If we didn’t have this line then the window would immediately close.</p>
+</div>
 </div>
 
 
@@ -201,6 +209,7 @@ The first is the width of the window and the second is the height of the window.
 </ul>
 </li>
 <li><a class="reference internal" href="#creating-the-screen-continued">Creating the screen - continued</a></li>
+<li><a class="reference internal" href="#waiting">Waiting</a></li>
 </ul>
 </li>
 </ul>
