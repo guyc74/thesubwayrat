@@ -16,22 +16,27 @@ Each directory is a folder that contains files
 
 In the figure below we see an example of a directory structure.
 The directory structure is like a tree.
-The start of the tree (called a root) is the computers hard drive usually called "c:".
-You can see in the picture that the root directory has three sub directories (or folders): Home, Program Files and Windows.
-The Home directory has one sub directory: thesubwayrat
-The thesubwayrat directory has TBD files.
+The start of the tree (called a root) is the computer's hard drive. It is usually called "c:".
+You can see in the picture that the root directory has several sub directories (or folders):
+'My documents', 'My Revit', 'Program Files', 'Users' and 'Windows'.
+The 'My Revit' directory has two sub directories: 'Refence' and 'Working Direcotry'.
+Inside the directory 'Refence' there is one file 'file_01.rvt'.
+
+.. image:: _static/directory_structure.png
+  :scale: 100 %
+  :align: center
 
 
-
-Setting up an editor and a compiler
------------------------------------
+Setting up an editor and an interpreter
+---------------------------------------
 We usually use Microsoft Word to write letters and other documents.
 Programs are written in an editor dedicated for writing programs.
 We will use Microsoft code.
 To install it on your computer click here https://code.visualstudio.com/download and follow the install instructions.
 
 Once we've written a program we need to run (or execute) it.
-This is done using a compiler.
+This is done using an interpreter.
+We will be using Python.
 
 ..
   .. raw:: html
@@ -40,20 +45,20 @@ This is done using a compiler.
         <source src="_static/video1.mkv">
       </video>
 
-- click the extensions button
-- write "python" in the top left bar where it says "search Extensions in Marketplace"
-- Install the "Python" extension if it is not already installed
+  - click the extensions button
+  - write "python" in the top left bar where it says "search Extensions in Marketplace"
+  - Install the "Python" extension if it is not already installed
 
-- Install python
+  - Install python
 
-- TBD
+  - TBD
 
-- Connect VSCode to Python
-- Press Ctrl+Shift+P 
-- type ">python: select interpreter" and select one of the interpreters listed.
+  - Connect VSCode to Python
+  - Press Ctrl+Shift+P 
+  - type ">python: select interpreter" and select one of the interpreters listed.
 
-- To run a program right click at any point in the document and select "Run Python File in terminal"
+  - To run a program right click at any point in the document and select "Run Python File in terminal"
 
-Select one or more lines, then press Shift+Enter or right-click and select Run Selection/Line in Python Terminal. This command is convenient for testing just a part of a file.
+  Select one or more lines, then press Shift+Enter or right-click and select Run Selection/Line in Python Terminal. This command is convenient for testing just a part of a file.
 
-We will use this option to run simple lines of code
+  We will use this option to run simple lines of code

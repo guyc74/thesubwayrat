@@ -15,14 +15,13 @@ However the new york city subway has many obstacles.
 In our game we help Manny avoid the obstacles in the new york city subway.
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+  :maxdepth: 2
+  :caption: Contents:
 
   introduction
   part1
-  part2
   story
 
 .. image:: _static/manny.png
-   :scale: 500 %
-   :align: center
+  :scale: 500 %
+  :align: center
